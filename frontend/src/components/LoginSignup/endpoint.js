@@ -1,3 +1,3 @@
 export const endpoint = 'https://social-fnvb.onrender.com/api';
-export const socketEndpoint = 'http://localhost:3001';
+export const socketEndpoint = 'https://social-fnvb.onrender.com';
 //change after hosting
