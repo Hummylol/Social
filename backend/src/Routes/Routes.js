@@ -1,6 +1,6 @@
 import express from 'express';
 import { signup, login, updateProfile } from '../controllers/loginSignup.js';
-import auth from '../middleware/auth.js'; // Re-enable auth middleware as it's important for security
+import auth from '../Middleware/auth.js'; 
 import { getAllUsers, createMessage, getMessages, deleteMessage } from '../controllers/directMessages.js';
 
 const router = express.Router();
