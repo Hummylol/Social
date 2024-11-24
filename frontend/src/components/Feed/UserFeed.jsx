@@ -51,7 +51,7 @@ const UserFeed = ({ isDarkMode, toggleTheme }) => {
       <h1 className="text-2xl font-bold mb-4 p-4">Welcome, {user.username}</h1>
       <div className="absolute top-2 right-4">
         <button onClick={toggleDM} className="hover:opacity-80 transition-opacity">
-          <FontAwesomeIcon icon={faEnvelope} />
+          <FontAwesomeIcon icon={faEnvelope} className='h-8'/>
         </button>
       </div>
       <div 

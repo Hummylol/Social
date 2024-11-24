@@ -39,7 +39,7 @@ const UserList = ({ isDarkMode, setSelectedUser, onClose }) => {
     }
 
     return (
-      <div className={`flex flex-col h-screen w-[30vw] p-2 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      <div className={`flex flex-col h-fit border-2 border rounded-2xl w-[30vw] p-2 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
         <div className="flex items-center mb-4">
           <button 
             onClick={onClose}

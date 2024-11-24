@@ -60,9 +60,9 @@ const Profile = ({ isDarkMode }) => {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-5xl font-bold mb-8 text-center transition-transform duration-300 hover:scale-105">User Profile</h1>
         
-        <form onSubmit={handleSubmit} className={`max-w-md mx-auto ${isDarkMode ? 'bg-[#111111]' : 'bg-[#f0f0f0]'} shadow-2xl rounded-lg px-8 pt-6 pb-8 mb-4 border-opacity-20 transition-all duration-500`}>
+        <form onSubmit={handleSubmit} className={`max-w-md rounded-3xl  mx-auto ${isDarkMode ? 'bg-[#111111]' : 'bg-[#f0f0f0]'} shadow-2xl px-8 pt-6 pb-8 mb-4 transition-all duration-500`}>
           {['currentPassword', 'newUsername', 'newPassword', 'confirmPassword'].map((field) => (
-            <div key={field} className="mb-6">
+            <div key={field} className="mb-6 ">
               <label className="block text-sm font-bold mb-2" htmlFor={field}>
                 {field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1').trim()}
               </label>
@@ -93,36 +93,37 @@ const Profile = ({ isDarkMode }) => {
       {/* Motion logout button */}
       <motion.button
         onClick={handleLogout}
-        className={`fixed bottom-6 right-6 p-4 transition-all duration-300 ${
-          isDarkMode ? 'bg-red-600 text-black' : 'bg-red-600 text-white'
-        } rounded-full shadow-lg group`}
-        initial={{ width: '60px' }} // Initial width
-        whileHover={{ width: '130px' }} // Animate width on hover
-        transition={{ type: 'spring', damping: 20 }} // Smooth transition using spring physics
+        className={`fixed bottom-6 right-6 p-3 ${
+          isDarkMode ? 'bg-red-600 text-white' : 'bg-red-600 text-white'
+        } rounded-full shadow-lg overflow-hidden`}
+        initial={{ width: '48px' }}
+        whileHover={{ width: '120px' }}
+        transition={{ 
+          duration: 0.4,
+          ease: [0.4, 0, 0.2, 1], // This is a custom cubic-bezier curve
+          type: "spring",  // Using spring physics
+          stiffness: 100,
+          damping: 15
+        }}
       >
-        <motion.div className="flex items-center justify-center">
-          {/* Animate the icon */}
-          <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            whileHover={{ x: -10 }} // Moves slightly to the left on hover
-            transition={{ duration: 0.3 }}
-          >
-            <FontAwesomeIcon 
-              icon={faSignOutAlt} 
-              className="text-xl"
-            />
-          </motion.div>
-
-          {/* Animate the text */}
-          <motion.span
-            className="ml-2"
-            initial={{ opacity: 0, x: 10 }}
-            whileHover={{ opacity: 1, x: 0 }} // Fade in and move into place on hover
-            transition={{ duration: 0.3, delay: 0.1 }} // Slight delay for a smoother effect
+        <div className="flex items-center justify-start w-full">
+          <FontAwesomeIcon 
+            icon={faSignOutAlt}
+            className="text-xl min-w-[24px]" 
+          />
+          <motion.span 
+            className="ml-2 whitespace-nowrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{
+              duration: 0.2,
+              delay: 0.1  // Slight delay for text fade-in
+            }}
           >
             Logout
           </motion.span>
-        </motion.div>
+        </div>
       </motion.button>
     </div>
   )

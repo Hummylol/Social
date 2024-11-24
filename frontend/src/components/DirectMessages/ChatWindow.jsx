@@ -82,7 +82,6 @@ const ChatWindow = ({ selectedUser, setSelectedUser, isDarkMode, currentUserId, 
           );
 
           const newMessage = response.data.data;
-          setMessages(prevMessages => [...prevMessages, newMessage]);
           setMessage('');
           socket.emit('sendMessage', newMessage);
           scrollToBottom();
@@ -132,10 +131,10 @@ const ChatWindow = ({ selectedUser, setSelectedUser, isDarkMode, currentUserId, 
     };
 
     return (
-      <div className={`chat-window relative h-[90vh] flex flex-col rounded-3xl ${
+      <div className={`chat-window relative h-[90vh] border-2 border-gray-950 flex flex-col rounded-3xl ${
         isDarkMode ? 'bg-black text-white' : 'bg-white text-black'
       }`}>
-        <div className={`top flex shadow-md ${
+        <div className={`top flex shadow-md rounded-3xl ${
           isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
         }`}>
           <button 
@@ -143,7 +142,7 @@ const ChatWindow = ({ selectedUser, setSelectedUser, isDarkMode, currentUserId, 
             className={`p-3 ${
               isDarkMode 
                 ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                : 'bg-gray-200 text-black hover:bg-gray-300'
+                : 'bg-gray-200 text-black hover:bg-red-500'
             } transition-colors w-1/5 rounded-tl-3xl`}
           >
             Back
@@ -209,7 +208,7 @@ const ChatWindow = ({ selectedUser, setSelectedUser, isDarkMode, currentUserId, 
             </div>
           )}
         </div>
-        <div className={`p-4 shadow-inner ${
+        <div className={`p-4 shadow-inner rounded-3xl ${
           isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
         }`}>
           <div className='flex justify-between w-full'>
